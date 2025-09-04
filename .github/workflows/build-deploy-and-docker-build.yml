@@ -17,8 +17,6 @@ jobs:
         
       - name: Install Node
         uses: actions/setup-node@v5
-        with:
-          node-version: 20
 
       - name: Install dependencies
         run: corepack enable
