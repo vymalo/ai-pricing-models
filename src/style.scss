@@ -1,22 +1,2 @@
-section {
-  section {
-    img {
-      height: 12vw;
-    }
-  }
-}
-
-img {
-  $logo-margin: 24px;
-
-  &[alt="adorsys-logo"] {
-    width: 25vw;
-  }
-
-  &[alt="@-logo"] {
-    width: 70px;
-    height: auto;
-    margin-left: $logo-margin;
-    margin-top: $logo-margin;
-  }
-}
+@use "tailwindcss/theme.css";
+@use "tailwindcss/utilities.css";

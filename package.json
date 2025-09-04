@@ -1,5 +1,5 @@
 {
-  "name": "parent-presentation",
+  "name": "ai-pricing-models",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,18 +9,24 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build-for-gh": "vite build --base=/gis-presentation"
+    "build-for-gh": "vite build --base=/ai-pricing-models"
   },
   "devDependencies": {
-    "@types/reveal.js": "^5.0.3",
-    "gh-pages": "^6.1.1",
-    "sass": "^1.77.8",
-    "typescript": "^5.2.2",
-    "vite": "^5.3.4"
+    "@types/reveal.js": "^5.2.0",
+    "cssnano": "^7.1.1",
+    "gh-pages": "^6.3.0",
+    "sass": "^1.92.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.4"
   },
   "dependencies": {
-    "mermaid": "^10.9.1",
-    "reveal.js": "^5.1.0",
-    "reveal.js-mermaid-plugin": "^2.3.0"
-  }
+    "@tailwindcss/postcss": "^4.1.12",
+    "highlight.js": "^11.11.1",
+    "mermaid": "^11.10.1",
+    "postcss": "^8.5.6",
+    "reveal.js": "^5.2.1",
+    "reveal.js-mermaid-plugin": "^2.3.0",
+    "tailwindcss": "^4.1.12"
+  },
+  "packageManager": "yarn@4.9.4"
 }
