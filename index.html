@@ -1,288 +1,806 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8"/>
-    <link rel="icon" type="image/svg+xml" href="/gis-presentation/vite.svg"/>
+    <title>AI Cloud Provider Pricing Models and Reasoning Budget Strategy</title>
+    <link rel="icon" type="image/svg+xml" href="/ai-pricing-models/vite.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Parent presentation</title>
-  <script type="module" crossorigin src="/gis-presentation/assets/index-690JMyAI.js"></script>
-  <link rel="stylesheet" crossorigin href="/gis-presentation/assets/index-D_SosjQq.css">
+  <script type="module" crossorigin src="/ai-pricing-models/assets/index-1oFlZ8ce.js"></script>
+  <link rel="stylesheet" crossorigin href="/ai-pricing-models/assets/index-DRCOPeWT.css">
 </head>
+
 <body>
+    <img src="data:image/svg+xml,%3csvg%20width='270'%20height='270'%20viewBox='0%200%20270%20270'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%200H270V270H8C3.58173%20270%200%20266.418%200%20262V0Z'%20fill='%232F2CF9'/%3e%3cg%20clip-path='url(%23clip0_3199_5734)'%3e%3cpath%20d='M173.564%2089.3809C171.966%2089.3809%20170.165%2089.4138%20168.156%2089.451C163.385%2089.5397%20157.45%2089.6499%20150.249%2089.3809H124.137C124.026%2089.3809%20123.925%2089.3895%20123.789%2089.4038C117.229%2089.5784%20115.853%2093.5267%20115.853%2096.8097V101.066C115.853%20104.512%20117.327%20108.619%20124.349%20108.619H150.608C169.132%20108.619%20174.135%20108.595%20174.135%20124.422H105.81C93.3812%20124.422%2085.278%20126.784%2080.3897%20131.467C80.351%20131.504%2080.3086%20131.539%2080.2704%20131.576C75.9693%20135.773%2074.2058%20141.806%2074.2046%20149.652L74.1765%20153.339C74.1765%20153.339%2074.1765%20153.339%2074.1765%20153.34L74.1745%20153.608C74.1745%20165.762%2080.7509%20180.238%20112.084%20180.238H155.996C181.966%20180.238%20195.135%20170.858%20195.135%20152.36V107.154C195.135%2098.0175%20184.651%2089.3809%20173.564%2089.3809ZM171.405%20158.026C169.82%20159.424%20165.885%20161.091%20156.142%20161.091H111.997C108.533%20161.091%20105.751%20161.062%20103.542%20160.854C103.153%20160.818%20102.782%20160.775%20102.428%20160.726C101.546%20160.605%20100.772%20160.443%20100.096%20160.229C99.7534%20160.12%2099.4362%20159.998%2099.1428%20159.861C99.0168%20159.802%2098.8951%20159.74%2098.7778%20159.675C98.3557%20159.442%2097.9865%20159.173%2097.6732%20158.858C96.8618%20158.041%2096.4008%20156.927%2096.2156%20155.408C96.1503%20154.874%2096.1181%20154.291%2096.1181%20153.651V150.334C96.1181%20149.221%2096.1215%20148.129%2096.6378%20147.165C97.6767%20145.226%20100.808%20143.807%20110.23%20143.785H110.232C110.304%20143.785%20110.371%20143.784%20110.444%20143.784H174.203L174.216%20147.753C174.216%20152.974%20173.276%20156.424%20171.405%20158.026Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_3199_5734'%3e%3crect%20width='120.96'%20height='90.8567'%20fill='white'%20transform='translate(74.1745%2089.3809)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="@-logo" width="70px" class="m-6 absolute">
 <div class="reveal">
-    <img src="data:image/svg+xml,%3csvg%20width='270'%20height='270'%20viewBox='0%200%20270%20270'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%200H270V270H8C3.58173%20270%200%20266.418%200%20262V0Z'%20fill='%232F2CF9'/%3e%3cg%20clip-path='url(%23clip0_3199_5734)'%3e%3cpath%20d='M173.564%2089.3809C171.966%2089.3809%20170.165%2089.4138%20168.156%2089.451C163.385%2089.5397%20157.45%2089.6499%20150.249%2089.3809H124.137C124.026%2089.3809%20123.925%2089.3895%20123.789%2089.4038C117.229%2089.5784%20115.853%2093.5267%20115.853%2096.8097V101.066C115.853%20104.512%20117.327%20108.619%20124.349%20108.619H150.608C169.132%20108.619%20174.135%20108.595%20174.135%20124.422H105.81C93.3812%20124.422%2085.278%20126.784%2080.3897%20131.467C80.351%20131.504%2080.3086%20131.539%2080.2704%20131.576C75.9693%20135.773%2074.2058%20141.806%2074.2046%20149.652L74.1765%20153.339C74.1765%20153.339%2074.1765%20153.339%2074.1765%20153.34L74.1745%20153.608C74.1745%20165.762%2080.7509%20180.238%20112.084%20180.238H155.996C181.966%20180.238%20195.135%20170.858%20195.135%20152.36V107.154C195.135%2098.0175%20184.651%2089.3809%20173.564%2089.3809ZM171.405%20158.026C169.82%20159.424%20165.885%20161.091%20156.142%20161.091H111.997C108.533%20161.091%20105.751%20161.062%20103.542%20160.854C103.153%20160.818%20102.782%20160.775%20102.428%20160.726C101.546%20160.605%20100.772%20160.443%20100.096%20160.229C99.7534%20160.12%2099.4362%20159.998%2099.1428%20159.861C99.0168%20159.802%2098.8951%20159.74%2098.7778%20159.675C98.3557%20159.442%2097.9865%20159.173%2097.6732%20158.858C96.8618%20158.041%2096.4008%20156.927%2096.2156%20155.408C96.1503%20154.874%2096.1181%20154.291%2096.1181%20153.651V150.334C96.1181%20149.221%2096.1215%20148.129%2096.6378%20147.165C97.6767%20145.226%20100.808%20143.807%20110.23%20143.785H110.232C110.304%20143.785%20110.371%20143.784%20110.444%20143.784H174.203L174.216%20147.753C174.216%20152.974%20173.276%20156.424%20171.405%20158.026Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_3199_5734'%3e%3crect%20width='120.96'%20height='90.8567'%20fill='white'%20transform='translate(74.1745%2089.3809)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="@-logo" class="logo">
     <div class="slides">
-        <!-- Title Slide -->
+
+        <!-- Main Title Slide -->
         <section>
-            <img src="/gis-presentation/assets/adorsys-DOSCBOU9.png" alt="adorsys-logo">
-            <h2>End of Training Program Presentation</h2>
-            <p>Welcome to the end of training program presentation for your children at the training center.</p>
+            <h1 class="text-3xl font-bold">AI Cloud Provider Pricing Strategy</h1>
+            <p class="mt-4 text-lg">Understanding how leading AI cloud services charge for AI model usage, and
+                strategies to
+                manage costs through token budgeting and model selection.</p>
+            <p class="mt-4 text-base text-gray-700">September 2025</p>
         </section>
 
-        <!-- Assiduity -->
+        <!-- Agenda Slide -->
         <section>
-            <section>
-                <h2>Assiduity</h2>
-                <img src="/gis-presentation/assets/assiduity-C2ec6UfZ.svg" alt="Assiduity">
-                <p>No Record of unexcused absences</p>
-            </section>
-            <section>
-                <h3>Participation in Classes</h3>
-                <img src="/gis-presentation/assets/participation-P9nhOPW7.svg" alt="Participation">
-                <p>Active involvement in discussions</p>
-                <p>Engaging with peers and instructors</p>
-            </section>
-            <section>
-                <h3>Punctuality</h3>
-                <img src="/gis-presentation/assets/punctuality-CK2zRlnn.svg" alt="Punctuality">
-                <p>Timely submission of assignments</p>
-                <p>Consistent arrival on time</p>
-            </section>
-            <section>
-                <h3>Home Assiduity</h3>
-                <img src="/gis-presentation/assets/home_assiduity-CiOjE_rm.svg" alt="Home Assiduity">
-                <p>Collaboration with parents</p>
-                <p>Regular check-ins with the colleague</p>
-                <p>Consistent study schedule at home</p>
-            </section>
+            <h2 class="text-2xl font-semibold">Agenda</h2>
+            <ul class="mt-3 list-disc list-inside">
+                <li>Billing metrics (tokens, compute)</li>
+                <li>Provider pricing comparisons (<span class="text-fuchsia-500">OpenAI</span>, <span
+                        class="text-fuchsia-500">Anthropic</span>, <span class="text-fuchsia-500">Google</span>)
+                </li>
+                <li>Reasoning and verbosity budgets</li>
+                <li>Cost factor visualization</li>
+                <li>Model selection and cost control guidance</li>
+                <li>Evolving pricing and future outlook</li>
+            </ul>
         </section>
 
-        <!-- Work -->
+        <!-- Horizontal Section: Understanding AI Pricing Basics -->
         <section>
             <section>
-                <h2>Work</h2>
-                <img src="/gis-presentation/assets/assigntment_completed-B-1FcqFt.svg" alt="Assignments">
-                <p>Homework assignments</p>
-                <p>Group projects</p>
-                <p>Individual tasks</p>
-            </section>
-            <section>
-                <h3>Projects Developed</h3>
-                <img src="/gis-presentation/assets/projects_developed-OCRN9-Nn.svg" alt="Projects">
-                <p>Science fair projects</p>
-                <p>Research and exposes</p>
-                <p>Technology and coding projects</p>
-            </section>
-            <section>
-                <h3>Extra-Curricular Activities</h3>
-                <img src="/gis-presentation/assets/Extra_Curricular_Activities-D70M_dNp.svg" alt="Extra-Curricular">
-                <p>Sports</p>
-                <p>Environmental conservation</p>
-                <p>Technology and innovation</p>
-            </section>
-        </section>
-
-        <!-- Progress -->
-        <section>
-            <section>
-                <h2>Progress</h2>
-                <div class="mermaid">
-                    graph TD;
-                    A[Skills Improvement]
-                    B[Knowledge Gained]
-                    C[Behavioral Changes]
-                    D[Projects]
-                </div>
-            </section>
-            <section>
-                <h3>Skills Improvement</h3>
-                <img src="/gis-presentation/assets/Skills_Improvement-C1yqZdZC.svg" alt="Skills">
-                <p>Improved problem-solving abilities</p>
-            </section>
-            <section>
-                <h3>Knowledge Gained</h3>
-                <img src="/gis-presentation/assets/Knowledge_Gained-DBj-jAxc.svg" alt="Knowledge">
-                <p>Understanding of core subjects</p>
-                <p>Exposure to new concepts and ideas</p>
-            </section>
-            <section>
-                <h3>Behavioral Changes</h3>
-                <img src="/gis-presentation/assets/Behavioral_Changes-B_oBmrSI.svg" alt="Behavioral">
-                <p>Increased responsibility</p>
-                <p>Better teamwork and cooperation</p>
-            </section>
-        </section>
-
-        <section>
-            <section>
-                <h2>Projects</h2>
-                <div class="mermaid">
-                    graph LR;
-                    A[All] --> F
-                    A --> H
-                    A --> J
-                    A --> L
-                    A --> M
-                    F[DataSafe, XS2A & Quac 02.24] --> G[Wazuh OP 07.24]
-                    H[Keycloak 03.24] --> I[Datev Wallet 06.24]
-                    J[Rust 05.24] --> K[DidComm 05.24]
-                    L[CloudFoundry / Terraform 06.24]
-                    M[Lynx Scanner 03.24]
-                </div>
-            </section>
-            <section>
-                <h3>Project Timeline</h3>
-                <div class="mermaid">
-                    timeline
-
-                    section February 2024
-                    DataSafe, XS2A & Quac: 02.24
-
-                    section March 2024
-                    Keycloak: 03.24
-                    Lynx Scanner: 03.24
-
-                    section May 2024
-                    Rust: 05.24
-                    DidComm: 05.24
-
-                    section June 2024
-                    Datev Wallet: 06.24
-                    CloudFoundry / Terraform: 06.24
-
-                    section July 2024
-                    Wazuh OP: 07.24
-                </div>
-            </section>
-            <section>
-                <h3>Management Tasks</h3>
-                <div class="mermaid">
-                    graph TD;
-                    A["Project Management"] --> N[Applications Management]
-                    A --> O[Group Management]
-                    A --> P[Document Management]
-                </div>
-            </section>
-        </section>
-
-        <!-- Certifications -->
-        <section>
-            <section>
-                <h2>Certifications</h2>
-                <ul>
-                    <li>LPIC System Admin</li>
-                    <li>Java Certified Oracle Fundamentals</li>
-                    <li>JavaScript OpenEDG Essential</li>
-                    <li>Stripe Professional Cert</li>
-                    <li>LPIC DevOps Tool Eng Cert</li>
-                    <li>...</li>
+                <h2 class="text-2xl font-semibold">Why Pricing Models Matter</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>LLM API usage can be a major factor in AI project budgets: – understanding costs prevents
+                        unpleasant
+                        surprises.
+                    </li>
+                    <li>Optimizing which model and how it's used can save significant money while still meeting
+                        performance
+                        needs.
+                    </li>
+                    <li>Pricing knowledge = ability to estimate ROI, set user pricing, and scale AI features
+                        sustainably.
+                    </li>
                 </ul>
             </section>
             <section>
-                <h2>Certifications</h2>
-                <div class="mermaid">
-                    graph TD;
-                    B[JavaScript OpenEDG Essential] --> D[LPIC DevOps Tool Eng Cert]
-                    C[Java Certified Oracle Fundamentals] --> D
-                    B --> E[Stripe Professional Cert]
-                    A[LPIC System Admin] --> B
-                    A --> C
-                    C --> E
-                    E --> F[...]
-                    D --> G[...]
-                </div>
-            </section>
-            <section>
-                <h3>LPIC 10X</h3>
-                <img src="/gis-presentation/assets/lpic-DKNrcmC6.svg" alt="LPIC">
-                <p>Linux Professional Institute Certification</p>
-                <p>Mastery of Linux system administration</p>
-                <a href="https://www.lpi.org/our-certifications/exam-101-objectives" target="_blank">LPIC
-                    Certification</a>
-            </section>
-            <section>
-                <h3>JavaScript</h3>
-                <img src="/gis-presentation/assets/javascript-Cy6tk3QB.svg" alt="JavaScript">
-                <p>Fundamental and advanced JavaScript skills</p>
-                <p>Projects and applications developed using JavaScript</p>
-                <a href="https://www.javascript.com/learn/certification" target="_blank">JavaScript Certification</a>
-            </section>
-            <section>
-                <h3>Java</h3>
-                <img src="/gis-presentation/assets/java-C2MTHiuk.svg" alt="Java">
-                <p>Comprehensive understanding of Java programming</p>
-                <p>Building robust applications with Java</p>
-                <a href="https://education.oracle.com/java-certification" target="_blank">Java Certification</a>
-            </section>
-        </section>
-
-        <!-- Challenges Overcome -->
-        <section>
-            <section>
-                <h2>Challenges</h2>
-                <img src="/gis-presentation/assets/challenges-DlnUvpqI.svg" alt="Challenges">
-                <p>Academic challenges</p>
-                <p>Environmental challenges</p>
-                <p>Social challenges</p>
-            </section>
-            <section>
-                <h3>Solutions Found</h3>
-                <img src="/gis-presentation/assets/solutions-Q_qMiOvc.svg" alt="Solutions">
-                <ul>
-                    <li>Different Student learning curve</li>
-                    <li>New city, new weather</li>
-                    <li>New people – new culture</li>
-                    <li>Arguing a lot?</li>
+                <h2 class="text-2xl font-semibold">Key Factors in AI API Billing</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b>Usage-based billing:</b> Pay only for processed data (no flat fees).</li>
+                    <li><b>Tokens/Characters:</b> Input (prompt) and output (response) measured separately.</li>
+                    <li><b>Input vs Output Rates:</b> Output tokens often cost more due to higher compute.</li>
+                    <li><b>Compute/Instance type:</b> Relevant for self-hosted models (CPU/GPU/TPU hours).</li>
+                    <li><b>Region & Latency:</b> Proximity reduces latency; some regions have premium pricing.</li>
                 </ul>
             </section>
             <section>
-                <h3>Lessons Learned</h3>
-                <img src="/gis-presentation/assets/lessons_learned-DPxv_2aB.svg" alt="Lessons">
-                <ul>
-                    <li>Perseverance and resilience</li>
-                    <li>Problem-solving techniques</li>
-                    <li>Personalized training for each</li>
-                    <li>...</li>
+                <h2 class="text-2xl font-semibold">What is a Token?</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>A token is a chunk of text (roughly 4 characters of English on average). It can be a word or
+                        just part
+                        of a word.
+                    </li>
+                    <li>Example: the phrase "ChatGPT is great" consists of 3 tokens: (as an approximation).</li>
+                    <li>All text exchanged with the model is broken into tokens for billing and processing purposes.
+                    </li>
+                    <li>Providers often quote prices per 1,000 tokens (or per million tokens for larger scale) as a
+                        convenient
+                        unit.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold">Input vs Output Tokens</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b>Input tokens:</b> tokens in the prompt you send (query, system instructions, examples).
+                    </li>
+                    <li><b>Output tokens:</b> tokens in the model's generated response.</li>
+                    <li>Example: 50-token question + 100-token answer = 150 total tokens used.</li>
+                </ul>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold">Input vs Output Tokens (cont.)</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>Output tokens are often billed at a higher rate than input due to <span
+                            class="text-sky-500">greater computation</span>.
+                    </li>
+                    <li>Some usage categories (e.g., special reasoning or citation tokens) may be counted
+                        separately.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold">Token Billing Example</h2>
+                <div class="mermaid">
+                    graph LR
+                    A["User Prompt (500 tokens)"] --> B{Input Cost};
+                    B -- "$2/M input" --> C[Input: $0.0010];
+                    A --> D{"Model Response (200 tokens)"};
+                    D -- "$8/M output" --> E[Output: $0.0016];
+                    C & E --> F[Total Cost: $0.0026];
+                </div>
+                <p class="mt-3 text-sm text-gray-700">*(Example: <span class="text-sky-500">500</span>-token prompt,
+                    <span class="text-sky-500">200</span>-token answer. Rates: <span
+                            class="text-sky-500">$2/M</span> input, <span class="text-sky-500">$8/M</span> output.)*
+                </p>
+            </section>
+        </section>
+
+        <!-- Horizontal Section: OpenAI Pricing -->
+        <section>
+            <section>
+                <h2 class="text-2xl font-semibold"><span class="text-fuchsia-500">OpenAI</span> Pricing Basics</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>Token-based pricing (prompt & completion tokens).</li>
+                    <li>Larger, more capable models cost more per token.</li>
+                    <li>Prices often quoted per <span class="text-sky-500">1,000</span> tokens (e.g., original <span
+                            class="text-blue-200 bg-blue-500/30 rounded-xl px-4">GPT-4</span>: <span
+                            class="text-sky-500">~$0.03/1K</span> input, <span class="text-sky-500">$0.06/1K</span>
+                        output).
+                    </li>
+                    <li>Newer models like <span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">GPT-4
+                                Turbo</span> (<span class="text-sky-500">128k</span> context) offer significant cost
+                        reductions.
+                    </li>
+                    <li><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">GPT-3.5 Turbo</span> is highly
+                        cost-effective
+                        (<span class="text-sky-500">~$1-2/million</span> tokens) for high-volume use.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold"><span class="text-fuchsia-500">OpenAI</span> Model Pricing
+                    Examples (Sept
+                    2025)</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">GPT-3.5 Turbo</span>:</b>
+                        <span class="text-sky-500">~$3/M</span> input, <span class="text-sky-500">~$6/M</span>
+                        output
+                        (cost-effective).
+                    </li>
+                    <li><b><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">GPT-4</span> (<span
+                            class="text-sky-500">8k</span>/<span class="text-sky-500">32k</span>):</b> <span
+                            class="text-sky-500">$5-30/M</span> input, <span class="text-sky-500">$20-60/M</span>
+                        output (varies by
+                        version/context, e.g., Turbo is cheaper).
+                    </li>
+                    <li><b><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">GPT-5</span>:</b> The latest
+                        model,
+                        offering
+                        SOTA performance in various benchmarks. Pricing is competitive, with a focus on efficiency.
+                    </li>
+                </ul>
+                <p class="mt-3 text-sm text-gray-700">*(Prices are dynamic; OpenAI frequently reduces costs.)*</p>
+            </section>
+
+            <section data-auto-animate data-auto-animate-id="hidden-costs-openai">
+                <h2 data-id="rag-title-openai-hidden-costs" class="text-2xl font-semibold"><span
+                        class="text-fuchsia-500">OpenAI</span>: Hidden "Reasoning" Tokens</h2>
+                <div class="mermaid">
+                    graph TD
+                    A[User Prompt] --> B[Model Internal Reasoning];
+                    B --> C[Hidden Reasoning Tokens];
+                    C --> D["Output Tokens (Visible)"];
+                    D --> E[User Final Answer];
+                    B -- "Billed at Output Rate" --> Cost[Higher Cost];
+                    C -- "Can exceed visible output" --> Cost;
+                </div>
+            </section>
+            <section data-auto-animate data-auto-animate-id="hidden-costs-openai">
+                <h2 data-id="rag-title-openai-hidden-costs" class="text-2xl font-semibold"><span
+                        class="text-fuchsia-500">OpenAI</span>: Hidden "Reasoning" Tokens</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>Advanced <span class="text-fuchsia-500">OpenAI</span> models (e.g., <span
+                            class="text-blue-200 bg-blue-500/30 rounded-xl px-4">O1</span>) use internal
+                        chain-of-thought reasoning.
+                    </li>
+                    <li><b>Reasoning tokens</b> are generated but not visible, billed at output rate, increasing
+                        cost.
+                    </li>
+                </ul>
+            </section>
+            <section data-auto-animate data-auto-animate-id="hidden-costs-openai">
+                <h2 data-id="rag-title-openai-hidden-costs" class="text-2xl font-semibold"><span
+                        class="text-fuchsia-500">OpenAI</span>: Hidden "Reasoning" Tokens</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">O1's</span> hidden tokens often
+                        exceed
+                        visible output (e.g., ~3.9 internal per 1 answer token).
+                    </li>
+                    <li>Budget for these "thought process" tokens; usage APIs report total tokens used.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold"><span class="text-fuchsia-500">OpenAI</span>: Cost-Saving
+                    Features</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b>Batch API:</b> 50% off token prices for batch processing.</li>
+                    <li><b>Cached tokens:</b> Repeated input prompts are ~90% cheaper.</li>
+                    <li><b>Model variety:</b> Smaller models (e.g., <span
+                            class="text-blue-200 bg-blue-500/30 rounded-xl px-4">GPT-4 Mini/Nano</span>) for less
+                        demanding tasks.
+                    </li>
+                    <li><b>Fine-tuning:</b> Reduces prompt length needed, but has initial training costs.</li>
                 </ul>
             </section>
         </section>
 
-        <!-- Future Steps -->
+        <!-- Horizontal Section: Anthropic Claude Pricing -->
         <section>
             <section>
-                <h2>Future Steps</h2>
-                <img src="/gis-presentation/assets/future_steps-D2aWiNeq.svg" alt="Goals">
-                <p>Academic aspirations</p>
-                <p>Career ambitions</p>
+                <h2 class="text-2xl font-semibold"><span class="text-fuchsia-500">Anthropic</span> Claude: Pricing
+                    Basics</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><span class="text-fuchsia-500">Anthropic's</span> Claude API charges by tokens (input vs
+                        output).
+                    </li>
+                    <li>Models like <span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Opus</span>, <span
+                            class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Sonnet</span>, <span
+                            class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Haiku</span> have different pricing
+                        tiers.
+                    </li>
+                    <li>Input tokens are cheaper than output (e.g., <span
+                            class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Claude 4 Opus</span>: <span
+                            class="text-sky-500">$15/M</span> input, <span class="text-sky-500">$75/M</span>
+                        output).
+                    </li>
+                    <li>Tiers allow model selection based on budget and performance needs.</li>
+                </ul>
             </section>
             <section>
-                <h3>Areas for Improvement</h3>
-                <img src="/gis-presentation/assets/areas_of_improvement-WW0_DMLX.svg" alt="Improvement">
-                <div class="mermaid">
-                    graph LR;
-                    A[Improvement Areas] --> B[Finances]
-                    A --> C[Continuous Learning]
-                    A --> D[Discipline]
-                </div>
+                <h2 class="text-2xl font-semibold"><span class="text-fuchsia-500">Anthropic</span>: Long Context &
+                    Prompt
+                    Caching</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Claude</span> offers large
+                        context windows
+                        (<span class="text-sky-500">100k+</span> tokens).
+                    </li>
+                    <li>Long prompts (<span class="text-sky-500">200k+</span> tokens) are charged at <span
+                            class="text-sky-500">2x</span> the normal rate.
+                    </li>
+                    <li><b>Prompt caching:</b> Automatic caching for identical prompts (<span
+                            class="text-sky-500">10%</span>
+                        normal cost).
+                    </li>
+                    <li><span class="text-sky-500">Two</span> cache tiers (<span
+                            class="text-sky-500">5</span>-minute, <span class="text-sky-500">1</span>-hour) offer
+                        savings for repeated queries.
+                    </li>
+                </ul>
             </section>
             <section>
-                <h3>Plans for Continuous Learning</h3>
-                <img src="/gis-presentation/assets/continues_learning-Dvg2qVWL.svg" alt="Learning">
-                <p>Studying at UdM</p>
-                <p>Workshops at adorsys GmbH</p>
+                <h2 class="text-2xl font-semibold"><span class="text-fuchsia-500">Anthropic</span>: Model Variants &
+                    Use Cases
+                </h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Claude Opus</span>:</b>
+                        Largest, highest
+                        quality; for complex tasks. <span class="text-sky-500">~$15/M</span> input, <span
+                                class="text-sky-500">$75/M</span> output.
+                    </li>
+                    <li><b><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Claude Sonnet</span>:</b>
+                        Mid-range; for
+                        general tasks. <span class="text-sky-500">~$3/M</span> input, <span
+                                class="text-sky-500">$15/M</span>
+                        output.
+                    </li>
+                    <li><b><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Claude Haiku</span>:</b>
+                        Smallest,
+                        fastest; for simple, cost-critical tasks. <span class="text-sky-500">~$0.25/M</span> input,
+                        <span class="text-sky-500">$1.25/M</span> output.
+                    </li>
+                    <li>Batch jobs get <span class="text-sky-500">50%</span> discounts.</li>
+                </ul>
             </section>
         </section>
 
-        <!-- Conclusion -->
+        <!-- Horizontal Section: Google Vertex AI Pricing -->
         <section>
+            <section>
+                <h2 class="text-2xl font-semibold"><span class="text-fuchsia-500">Google</span> Vertex AI: Pricing
+                    Model</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><span class="text-fuchsia-500">Google</span> Vertex AI uses a <b>character-based</b> billing
+                        model.
+                    </li>
+                    <li>Charges are per 1,000 input/output characters (UTF-8 code points).</li>
+                    <li>Roughly, <span class="text-sky-500">1M</span> characters ≈ <span
+                            class="text-sky-500">700k</span>
+                        tokens.
+                    </li>
+                    <li>Example: <span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Text-Bison</span> model
+                        was <span class="text-sky-500">~$1.00</span> per million characters.
+                    </li>
+                    <li>API tools help count characters/tokens for cost estimation.</li>
+                </ul>
+            </section>
             <section data-auto-animate>
-                <h2>Conclusion</h2>
-                <h3>Thank you!</h3>
-                <img src="/gis-presentation/assets/conclusion-B6wx1Jwk.svg" alt="Summary">
-                <p>Overview of the progress made</p>
-                <p>Highlights of memorable moments</p>
+                <h2 class="text-2xl font-semibold"><span class="text-fuchsia-500">Google</span>: Model Pricing
+                    Examples</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Gemini Pro</span> (<span
+                            class="text-sky-500">v2.5</span>):</b> Top text model, <span
+                            class="text-sky-500">~$1.25/M</span>
+                        input, <span class="text-sky-500">~$10-15/M</span> output (up to <span
+                                class="text-sky-500">200k</span>
+                        context).
+                    </li>
+                    <li><b><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Gemini Flash</span>:</b>
+                        Faster, smaller,
+                        cheaper (<span class="text-sky-500">~$0.30/M</span> input, <span
+                                class="text-sky-500">$2.50/M</span>
+                        output) for rapid/high-volume tasks.
+                    </li>
+                    <li><b><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Veo 3</span>:</b> Latest model
+                        for
+                        generating
+                        video with audio, available in the Gemini app and Vertex AI.
+                    </li>
+                </ul>
             </section>
             <section data-auto-animate>
-                <h3>Thank you!</h3>
-                <img src="/gis-presentation/assets/encouragement-btAji49T.svg" alt="Encouragement">
-                <aside class="notes">
-                    <p>Motivating words for future endeavors</p>
-                    <p>Final thoughts and good wishes</p>
-                </aside>
-                <p>Thank you for your attention. We are proud of each child's journey and look forward to their future
-                    successes.</p>
+                <h2 class="text-2xl font-semibold"><span class="text-fuchsia-500">Google</span>: Model Pricing
+                    Examples</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b><span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">PaLM 2</span> models:</b>
+                        Older
+                        generation, largely succeeded by <span
+                                class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Gemini</span>.
+                    </li>
+                    <li>Pricing varies by region; some free usage offered (e.g., Gemini Pro trial).</li>
+                    <li>Other modalities (<span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Imagen</span>)
+                        use
+                        different unit pricing (per image, per second of video).
+                    </li>
+                </ul>
             </section>
         </section>
+
+        <!-- Horizontal Section: General Pricing Considerations -->
+        <section>
+            <section>
+                <h2 class="text-2xl font-semibold">Usage Mode: Managed API</h2>
+                <div class="mermaid">
+                    graph LR
+                    A[Usage Mode] --> B(Managed API Endpoints);
+                    B -- "Pay per Token/Char" --> D[No Server Management];
+                    B -- "No Idle Cost" --> G[Pay Only When Called];
+                </div>
+                <p>
+                    Strategy for Lower/Variable Usage
+                </p>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold">Usage Mode: Custom Deployment</h2>
+                <div class="mermaid mx-auto">
+                    graph LR
+                    C(Custom Deployment) -- "Pay for VM/Instance Time + Tokens" --> E[Manage Your Own Servers];
+                    E -- "Idle Cost Incurred" --> F[e.g., ~$70/day even with minimal usage];
+                </div>
+                <p>
+                    Strategy for High/Steady Volumes
+                </p>
+            </section>
+            <section data-auto-animate>
+                <h2 class="text-2xl font-semibold">Other Providers & Pricing Overview</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b><span class="text-fuchsia-500">Cohere</span> & <span class="text-fuchsia-500">AI21
+                                    Labs</span>:</b>
+                        Token-based, comparable to <span class="text-fuchsia-500">Anthropic</span> mid-tier.
+                    </li>
+                    <li><b><span class="text-fuchsia-500">Azure OpenAI</span>:</b> Aligns with <span
+                            class="text-fuchsia-500">OpenAI</span> rates, slight regional premium, provisioned
+                        throughput.
+                    </li>
+
+                </ul>
+            </section>
+            <section data-auto-animate>
+                <h2 class="text-2xl font-semibold">Other Providers & Pricing Overview</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b>Open-Source Hosted:</b> Lower token costs (e.g., <span
+                            class="text-fuchsia-500">Together.ai</span>,
+                        <span class="text-fuchsia-500">HuggingFace Inference API</span>), varying performance.
+                    </li>
+                    <li><b>General Range (<span class="text-sky-500">2025</span>):</b> Input <span
+                            class="text-sky-500">$0.25-$15/M</span> tokens, Output <span
+                            class="text-sky-500">$1.25-$75/M</span>
+                        tokens.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold">Regional Differences & Latency</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>Choose regions close to users for reduced latency.</li>
+                    <li>Pricing is generally consistent, but exceptions exist (e.g., Azure OpenAI regional
+                        premiums).
+                    </li>
+                    <li>Minimize data transfer costs by keeping AI endpoints in-region.</li>
+                    <li>Model availability varies by region, impacting latency for users.</li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- Horizontal Section: Cost Management Strategies -->
+        <section>
+            <section>
+                <h2 class="text-2xl font-semibold">Reasoning vs Verbosity</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b>Reasoning depth:</b> Internal thought steps; more steps = more tokens (visible or
+                        hidden).
+                    </li>
+                    <li><b>Output verbosity:</b> Length/detail of answer; higher verbosity = more output tokens.
+                    </li>
+                    <li>Explicit reasoning costs more; hidden internal reasoning also adds cost.</li>
+                    <li>Manage with <b>reasoning/verbosity budgets</b> for cost control.</li>
+                </ul>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold">Cost of Chain-of-Thought Reasoning</h2>
+                <div class="mermaid">
+                    sequenceDiagram
+                    participant U as User
+                    participant M as Model
+                    U->>M: Prompt (e.g. 100 tokens)
+                    activate M
+                    M-->>M: Internal reasoning step 1<br/>(200 tokens)
+                    M-->>M: Internal reasoning step 2<br/>(150 tokens)
+                    M-->>U: Final answer<br/> (50 tokens)
+                    deactivate M
+                </div>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold">Verbosity and Output Length</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>Long answers increase output token count and cost.</li>
+                    <li>Tailor response length to what's necessary (concise vs. detailed).</li>
+                    <li>Use API's <code><span class="text-sky-500">max_tokens</span></code> parameter to cap
+                        verbosity and cost.
+                    </li>
+                    <li>Balance <code><span class="text-sky-500">max_tokens</span></code> for completeness within
+                        budget.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold">Controlling Output Length</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>Use API parameters (<code>max_tokens</code>, <code>stop</code> sequences) to limit output.
+                    </li>
+                    <li>Employ prompt engineering for conciseness (e.g., "Summarize in 3 sentences").</li>
+                    <li>Structured formats (e.g., bullet points) can reduce verbosity.</li>
+                    <li>Periodically summarize/truncate multi-turn chat context.</li>
+                    <li>Implement application-level token budgets for sessions.</li>
+                </ul>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold">Multi-turn Interactions & Budgeting</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>Long chat conversations accumulate tokens rapidly.</li>
+                    <li>Plan a token budget per conversation (<span class="text-sky-500">~5-10</span> turns for
+                        costly models).
+                    </li>
+                    <li>Set caps on reasoning steps for agentic use to prevent runaway token usage.</li>
+                    <li>Monitor real-time API usage and enforce limits.</li>
+                    <li>Set hard dollar budget limits per user/period, optimizing models and
+                        <code><span class="text-sky-500">max_tokens</span></code>.
+                    </li>
+                </ul>
+            </section>
+
+            <section data-auto-animate>
+                <h2 data-id="box" class="text-2xl font-semibold">Comparing Provider Costs</h2>
+                <p class="mt-3">Let's put things in perspective with rough cost ranges (per million tokens):</p>
+                <ul class="list-disc list-inside">
+                    <li><b>Highest end:</b> <span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Claude 4
+                                Opus</span>
+                        (<span class="text-sky-500">~$75/M</span> output, <span class="text-sky-500">$15/M</span>
+                        input).
+                    </li>
+                    <li><b>Mid range:</b> <span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">GPT-4
+                                Turbo</span>, <span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Gemini
+                                Pro</span> (<span class="text-sky-500">~$10-20/M</span> output, <span
+                            class="text-sky-500">$2-5/M</span> input).
+                    </li>
+                </ul>
+                <small data-id="small-notice" class="mt-3 opacity-50">Choosing the right model can lead to
+                    order-of-magnitude cost
+                    differences.</small>
+            </section>
+            <section data-auto-animate>
+                <h2 data-id="box" class="text-2xl font-semibold">Comparing Provider Costs</h2>
+                <p class="mt-3">Let's put things in perspective with rough cost ranges (per million tokens):</p>
+                <ul class="list-disc list-inside">
+                    <li><b>Lower end:</b> <span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">GPT-3.5</span>,
+                        <span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Claude Instant</span> (<span
+                                class="text-sky-500">~$1-2/M</span> output, <span
+                                class="text-sky-500">$0.25-0.5/M</span> input).
+                    </li>
+                    <li><b>Ultra-low:</b> <span class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Claude
+                                Haiku</span>, some
+                        open-source (under <span class="text-sky-500">$1.25/M</span> output, <span
+                                class="text-sky-500">$0.25/M</span> input).
+                    </li>
+                </ul>
+                <small data-id="small-notice" class="mt-3 opacity-50">Choosing the right model can lead to
+                    order-of-magnitude cost
+                    differences.</small>
+            </section>
+
+            <section data-auto-animate>
+                <h2 data-id="rag-choosing-the-right-model" class="text-2xl font-semibold">Choosing the Right Model
+                </h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b>Cost-effectiveness:</b> Use the cheapest model that meets task needs (e.g., <span
+                            class="text-blue-200 bg-blue-500/30 rounded-xl px-4">GPT-3.5</span>, <span
+                            class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Claude Haiku</span> for routine
+                        tasks).
+                    </li>
+                    <li><b>Quality-critical:</b> Reserve top-tier models (<span
+                            class="text-blue-200 bg-blue-500/30 rounded-xl px-4">GPT-4</span>, <span
+                            class="text-blue-200 bg-blue-500/30 rounded-xl px-4">Claude 4</span>) for high-stakes
+                        tasks.
+                    </li>
+
+                </ul>
+            </section>
+            <section data-auto-animate>
+                <h2 data-id="rag-choosing-the-right-model" class="text-2xl font-semibold">Choosing the Right Model
+                </h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b>Model strengths:</b> Leverage specialized models for specific domains (e.g., code, math).
+                    </li>
+                    <li><b>Latency vs. cost:</b> Smaller models offer faster responses and lower costs for real-time
+                        needs.
+                    </li>
+                    <li><b>Trial and evaluate:</b> Test multiple models to find the optimal balance of cost and
+                        performance;
+                        utilize free quotas.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold">Leverage Smaller/Specialized Models</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>Use smaller models for simple tasks to reduce cost (e.g., <span
+                            class="text-sky-500">7B</span>/<span class="text-sky-500">13B</span> open-source, "nano"
+                        APIs).
+                    </li>
+                    <li>Specialized models (e.g., fine-tuned for code or medical Q&A) can outperform general models
+                        for specific
+                        tasks while being cheaper.
+                    </li>
+                    <li>Match the model to the job for significant cost savings.</li>
+                </ul>
+            </section>
+
+            <section data-auto-animate>
+                <h2 data-id="Mix-and-Match-Model-Strategy" class="text-2xl font-semibold">Mix-and-Match Model
+                    Strategy</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>Use multiple models in a pipeline to optimize cost/quality.</li>
+                    <li>Start with a cheap model for preliminary tasks (classify, simple answer).</li>
+                </ul>
+            </section>
+            <section data-auto-animate>
+                <h2 data-id="Mix-and-Match-Model-Strategy" class="text-2xl font-semibold">Mix-and-Match Model
+                    Strategy</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>Escalate to an expensive model only if the cheap model's output is uncertain or
+                        low-confidence.
+                    </li>
+                    <li>This handles easy queries cheaply, reserving high costs for complex ones.</li>
+                    <li>Modular approach: smaller models for simpler parts, larger models for refinement.</li>
+                </ul>
+            </section>
+
+            <section data-auto-animate>
+                <h2 data-id="Optimize-Your-Prompts" class="text-2xl font-semibold">Optimize Your Prompts</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b>Conciseness is key:</b> Remove irrelevant instructions; be specific.</li>
+                    <li><b>Example:</b> "Generate a compelling product description for a smartphone with X display,
+                        Y camera, Z
+                        battery, and W storage" is better than a long-winded request.
+                    </li>
+                </ul>
+            </section>
+            <section data-auto-animate>
+                <h2 data-id="Optimize-Your-Prompts" class="text-2xl font-semibold">Optimize Your Prompts</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b>Use system prompts</b> for consistent instructions; they can be cheaper.</li>
+                    <li>Avoid unnecessary chit-chat/filler in prompts.</li>
+                    <li>Use AI-Enhanced prompts.</li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- TODO: Add a sslide by slide optimization example using multiple sub-slides -->
+        <section>
+            <section>
+                <h2 data-id="rag-title-openai-hidden-costs" class="text-2xl font-semibold">Slide-by-Slide Optimization Example</h2>
+                <p class="mt-3">
+                    In conversational AI, long histories rapidly increase token usage. A common optimization is to
+                    periodically summarize the conversation.
+                </p>
+            </section>
+            
+            <section>
+                <h3 class="text-xl font-semibold">The Problem: Unoptimized History</h3>
+                <p class="text-sm">Without optimization, the entire chat history is sent with every new message,
+                    which is
+                    inefficient and costly.</p>
+                <pre><code class="language-typescript" data-line-numbers>
+// Full chat history is sent every time
+const history = [
+  new HumanMessage("What is the capital of France?"),
+  new AIMessage("The capital of France is Paris."),
+  new HumanMessage("What is its population?"),
+  new AIMessage("The population of Paris is over 2 million."),
+  ...
+]; // This list grows with every turn...
+
+const chat = new ChatOpenAI({ modelName: "gpt-4" });
+const prompt = ChatPromptTemplate.fromMessages([
+    new MessagesPlaceholder("history"),
+    ["human", "{input}"],
+]);
+
+const chain = prompt.pipe(chat);
+const response = await chain.invoke({
+    history: history,
+    input: "And its most famous museum?",
+});
+// This sends all previous messages, consuming many tokens.
+                    </code></pre>
+            </section>
+
+            <section data-auto-animate data-auto-animate-id="summarization-logi">
+                <h3 class="text-xl font-semibold" data-id="summarize-title">The Solution: Summarization Logic</h3>
+                <p class="text-sm" data-id="summarize-desc">We can create a function to summarize the history, using
+                    a
+                    cheaper, faster model to reduce costs for this task.</p>
+                <pre data-id="summarize-code"><code class="language-typescript" data-line-numbers>
+// 1. Initialize the OpenAI client
+const openai = new OpenAI({ apiKey: 'YOUR_API_KEY' });
+                    </code></pre>
+            </section>
+            <section data-auto-animate data-auto-animate-id="summarization-logi">
+                <h3 class="text-xl font-semibold" data-id="summarize-title">The Solution: Summarization Logic</h3>
+                <p class="text-sm" data-id="summarize-desc">We can create a function to summarize the history, using
+                    a
+                    cheaper, faster model to reduce costs for this task.</p>
+                <pre data-id="summarize-code"><code class="language-typescript" data-line-numbers>
+const openai = new OpenAI({ apiKey: 'YOUR_API_KEY' });
+
+// 2. Define the function to summarize the conversation
+async function summarizeHistory(messages: { role: string; content: string }[]): Promise&lt;string&gt; {
+    // Implementation will go here
+}
+                    </code></pre>
+            </section>
+            <section data-auto-animate data-auto-animate-id="summarization-logi">
+                <h3 class="text-xl font-semibold" data-id="summarize-title">The Solution: Summarization Logic</h3>
+                <p class="text-sm" data-id="summarize-desc">We can create a function to summarize the history, using
+                    a
+                    cheaper, faster model to reduce costs for this task.</p>
+                <pre data-id="summarize-code"><code class="language-typescript" data-line-numbers>
+// ...
+async function summarizeHistory(messages: { role: string; content: string }[]): Promise&lt;string&gt; {
+    // 3. Convert message objects into a single string
+    const historyText: string = messages.map(m => `${m.role}: ${m.content}`).join('\n');
+
+    // ...
+}
+                    </code></pre>
+            </section>
+            <section data-auto-animate data-auto-animate-id="summarization-logi">
+                <h3 class="text-xl font-semibold" data-id="summarize-title">The Solution: Summarization Logic</h3>
+                <p class="text-sm" data-id="summarize-desc">We can create a function to summarize the history, using
+                    a
+                    cheaper, faster model to reduce costs for this task.</p>
+                <pre data-id="summarize-code"><code class="language-typescript" data-line-numbers>
+    const historyText = messages.map(m => `${m.role}: ${m.content}`).join('\n');
+    
+    // 4. Call a cost-effective model for the summarization task
+    const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo", // Cheaper and faster!
+        messages: [
+            { role: "system", content: "Summarize the conversation briefly." },
+            { role: "user", content: historyText }
+        ],
+        max_tokens: 150,
+    });
+
+    return response.choices[0].message.content || "";
+                    </code></pre>
+            </section>
+
+            <section data-auto-animate data-auto-animate-id="the-optimized-workflow">
+                <h3 class="text-xl font-semibold" data-id="workflow-title">The Optimized Workflow</h3>
+                <p class="text-sm" data-id="workflow-desc">Now, we invoke the summarizer and send the compact
+                    summary
+                    instead of the full history.</p>
+                <pre data-id="workflow-code"><code class="language-typescript" data-line-numbers>
+const fullHistory = [ /* ... from previous example ... */ ];
+
+// 1. Summarize the history before the next turn
+const summarizedContext = await summarizeHistory(
+    fullHistory.map(m => ({ role: m._getType(), content: m.content as string }))
+);
+// summarizedContext is now a short paragraph, e.g., ~30 tokens.
+                    </code></pre>
+            </section>
+            <section data-auto-animate data-auto-animate-id="the-optimized-workflow">
+                <h3 class="text-xl font-semibold" data-id="workflow-title">The Optimized Workflow</h3>
+                <p class="text-sm" data-id="workflow-desc">Now, we invoke the summarizer and send the compact
+                    summary
+                    instead of the full history.</p>
+                <pre data-id="workflow-code"><code class="language-typescript" data-line-numbers>
+const fullHistory = [ /* ... from previous example ... */ ];
+const summarizedContext = await summarizeHistory(/* ... */);
+
+// 2. Create a new, compact context holder
+const context = [
+    new HumanMessage(summarizedContext), // The summary acts as context
+];
+                    </code></pre>
+            </section>
+            <section data-auto-animate data-auto-animate-id="the-optimized-workflow">
+                <h3 class="text-xl font-semibold" data-id="workflow-title">The Optimized Workflow</h3>
+                <p class="text-sm" data-id="workflow-desc">Now, we invoke the summarizer and send the compact
+                    summary
+                    instead of the full history.</p>
+                <pre data-id="workflow-code"><code class="language-typescript" data-line-numbers>
+const fullHistory = [ /* ... */ ];
+const summarizedContext = await summarizeHistory(/* ... */);
+const context = [ new HumanMessage(summarizedContext) ];
+
+// 3. Invoke the main chain with the summarized context
+const chat = new ChatOpenAI({ modelName: "gpt-4" });
+const prompt = ChatPromptTemplate.fromMessages([
+    new MessagesPlaceholder("history"),
+    ["human", "{input}"],
+]);
+const chain = prompt.pipe(chat);
+const response = await chain.invoke({
+    history: context, // We send the short summary
+    input: "And its most famous museum?",
+});
+// Result: Significant reduction in input tokens for the expensive GPT-4 call.
+                    </code></pre>
+            </section>
+        </section>
+
+        <!-- Horizontal Section: Future Outlook -->
+        <section>
+            <section>
+                <h2 class="text-2xl font-semibold">Evolving Pricing & Future Trends</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li><b>Continued price drops:</b> Competition and efficiency gains will likely drive token costs
+                        down.
+                    </li>
+                    <li><b>New billing models:</b> Expect more nuanced pricing (e.g., quality-of-service tiers,
+                        agentic step
+                        pricing).
+                    </li>
+                    <li><b>Specialized model pricing:</b> Models fine-tuned for specific tasks may have unique
+                        pricing.
+                    </li>
+                    <li><b>Focus on value:</b> Providers will emphasize ROI and business value over raw token cost.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold">Conclusion & Key Takeaways</h2>
+                <ul class="mt-3 list-disc list-inside">
+                    <li>Understand tokenomics: input vs output, reasoning costs, provider differences.</li>
+                    <li>Choose the right model for the job; don't default to the largest/most expensive.</li>
+                    <li>Control verbosity with budgets and prompt engineering.</li>
+                    <li>Leverage cost-saving features (caching, batching, smaller models).</li>
+                    <li>Monitor usage and stay updated on pricing changes.</li>
+                </ul>
+            </section>
+        </section>
+
     </div>
 </div>
 
