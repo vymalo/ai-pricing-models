@@ -611,7 +611,6 @@
             </section>
         </section>
 
-        <!-- TODO: Add a sslide by slide optimization example using multiple sub-slides -->
         <section>
             <section>
                 <h2 data-id="rag-title-openai-hidden-costs" class="text-2xl font-semibold">Slide-by-Slide Optimization Example</h2>
@@ -696,6 +695,7 @@ async function summarizeHistory(messages: { role: string; content: string }[]): 
                     a
                     cheaper, faster model to reduce costs for this task.</p>
                 <pre data-id="summarize-code"><code class="language-typescript" data-line-numbers>
+async function summarizeHistory(messages: { role: string; content: string }[]): Promise&lt;string&gt; {
     const historyText = messages.map(m => `${m.role}: ${m.content}`).join('\n');
     
     // 4. Call a cost-effective model for the summarization task
@@ -709,6 +709,7 @@ async function summarizeHistory(messages: { role: string; content: string }[]): 
     });
 
     return response.choices[0].message.content || "";
+}
                     </code></pre>
             </section>
 
